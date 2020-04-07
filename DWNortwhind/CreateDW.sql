@@ -15,6 +15,16 @@ CREATE TABLE DimCustomer(
 
 /*FALATAN LAS OTRAS Dimensiones: Clientes, Empleados  */
 
+CREATE TABLE DimEmployee(
+    EmployeeID int,
+    Name varchar(31),
+    City varchar(15),
+    Country varchar(15),
+    Region varchar(15),
+    hiredate datetime, 
+    PRIMARY KEY (EmployeeID)
+);
+
 
 
 /* crear dimension de tiempo importando datos y estructura creada con BI Studio*/
