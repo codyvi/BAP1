@@ -25,21 +25,24 @@ CREATE TABLE DimEmployee(
     PRIMARY KEY (EmployeeID)
 );
 
+CREATE TABLE DimTime(
+    OrderDate datetime,
+    PRIMARY KEY (orderDate)
+);
 
+CREATE TABLE DimProduct(
+    ProductID int,
+    ProductName varchar(40),
+    CategoryName varchar(15),
+    SupplierName varchar(40),
+    Address varchar(60),
+    City varchar(15),
+    Region varchar(15),
+    PostalCode varchar(10),
+    Country varchar(15),
+    PRIMARY KEY (ProductID)
+);
 
-/* crear dimension de tiempo importando datos y estructura creada con BI Studio*/
-/* el recurso Time es le que debio haber creado en Business Tntelligence studio y la estamos copiando
-a la tabla de DimTime. Las siguientes 2 lineas NO estan incompletas. Crean y cargan DimTime al mismo tiempo */
-select * into DimTime from JC0_NorthwindDW.dbo.Time
-go
-
---en Dimtime es necesario tener una llave primaria.
-alter table DimTime add primary key (pk_date)
-go
-
-
---tabla de Hechos FACT SALES puede ser necesario agregar-quitar columnas
--- OrderId  es necesario solo para efectos de la carga de los datos
 create table FactSales (
 ProductID       int ,
 EmployeeID      int ,
