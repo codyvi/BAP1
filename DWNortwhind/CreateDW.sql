@@ -21,7 +21,7 @@ CREATE TABLE DimEmployee(
     City varchar(15),
     Country varchar(15),
     Region varchar(15),
-    hiredate datetime, 
+    HireDate datetime, 
     PRIMARY KEY (EmployeeID)
 );
 
@@ -43,20 +43,20 @@ CREATE TABLE DimProduct(
     PRIMARY KEY (ProductID)
 );
 
-create table FactSales (
-ProductID       int ,
-EmployeeID      int ,
-CustomerID      char(5) ,
-orderDate       datetime ,
-OrderID         int,                               
-Quantity        smallint,
-unitPrice       money,
-discountPercent real,
-discountAmount  money,
-total           money, 
-primary key (ProductID, EmployeeID, CustomerID, orderDate),
-foreign key (ProductID)  references dbo.DimProduct(productID),
-foreign key (EmployeeID) references dbo.DimEmployee(employeeID),
-foreign key (CustomerID) references dbo.DimCustomer(CustomerID),
-foreign key (orderDate)  references dbo.DimTime(PK_Date)
-)
+CREATE TABLE FactSales(
+    ProductID int,
+    EmployeeID int,
+    CustomerID char(5),
+    OrderDate datetime,
+    OrderID int,
+    Quantity smallint,
+    UnitPrice money,
+    DiscountPercent real,
+    DiscountAmount money,
+    Total money,
+    PRIMARY KEY (ProductID, EmployeeID, CustomerID, OrderDate),
+    FOREIGN KEY (ProductID) REFERENCES dbo.DimProduct(ProductID),
+    FOREIGN KEY (EmployeeID) REFERENCES dbo.DimEmployee(EmployeeID),
+    FOREIGN KEY (CustomerID) REFERENCES dbo.DimCustomer(CustomerID),
+    FOREIGN KEY (OrderDate) REFERENCES dbo.DimTime(OrderDate)
+);
